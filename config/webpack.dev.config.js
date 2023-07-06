@@ -1,5 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { module:loderModules,plugins:commonPlugins } = require("./webpack.common.config");
+const {
+  module: loderModules,
+  plugins: commonPlugins,
+} = require("./webpack.common.config");
 
 module.exports = {
   mode: "development",
@@ -10,7 +13,20 @@ module.exports = {
     port: 8080,
     hot: true,
   },
-  module:loderModules,
+  resolveLoader: {
+    modules: ["node_modules", "./loaders"],
+  },
+  module: {
+    rules: [
+      ...loderModules.rules,
+      {
+        test: /\.js$/,
+        use: [
+          "replace-loader"
+        ],
+      },
+    ],
+  },
   plugins: [
     ...commonPlugins,
     new HtmlWebpackPlugin({

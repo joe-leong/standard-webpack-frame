@@ -1,5 +1,6 @@
 const { join } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FileListPlugin = require('../plugins/file-list-plugin')
 const {
   module: loderModules,
   plugins: commonPlugins,
@@ -16,6 +17,7 @@ module.exports = {
   module: loderModules,
   plugins: [
     ...commonPlugins,
+    new FileListPlugin(),
     new HtmlWebpackPlugin({ template: "/public/index.html" })
   ],
 };
