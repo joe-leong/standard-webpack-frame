@@ -11,6 +11,10 @@
     "preinstall": "node ./scripts/preinstall.js",
     "prepare": "husky install",
     "clear": "rimraf node_modules pnpm-lock.yaml .eslintcache docs dist",
+    "format": "prettier --cache --write \"src/**/*.@(html|js|ts|tsx|css|scss|md)\"",
+    "lint": "eslint --cache --rule 'new-cap: off' --ext=js,cjs,mjs,jsx,ts,tsx --fix ./src",
+    "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"src/**/*.@(html|js|cjs|mjs|ts|tsx|css|scss|md)\"",
+    "typecheck": "tsc --extendedDiagnostics --noEmit -p .",
     "commit": "git-cz"
   },
   "keywords": [],
@@ -26,6 +30,11 @@
     "webpack": "5.88.1",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.15.1",
-    "git-cz": "4.9.0"
+    "git-cz": "4.9.0",
+    "typescript": "5.1.6",
+    "eslint": "8.44.0",
+    "commitizen": "^4.3.0",
+    "prettier": "^3.0.0",
+    "cspell":"^6.31.1"
   }
 }
